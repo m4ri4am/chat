@@ -3,7 +3,7 @@ import Axios from "axios";
 
 
 const axios = Axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com/",
+    baseURL: "https://",
     headers: {
         // content
         "Content-Type": "application/json",

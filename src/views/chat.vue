@@ -56,10 +56,10 @@ export default {
 
   created() {
     this.fetchMessagesList();
-    // this.reverseScroll()
   },
-  mounted() {
-    // this.reverseScroll()
+
+  updated() {
+         this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight;
   },
   methods: {
     ...mapActions("messages", ["fetchMessagesList", "removeMessage"]),
@@ -69,10 +69,6 @@ export default {
       this.fetchMessagesList();
     },
 
-    // reverseScroll(){
-    //   console.log(this.$refs.messages);
-    //   this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight;
-    // },
     send() {
       if (this.text.length > 0) {
         this.getMessagesList.push({

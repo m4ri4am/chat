@@ -23,7 +23,7 @@ const mutations = {
 const actions = {
   fetchMessagesList({ commit }) {
     return axios
-      .get('posts')
+      .get('jsonplaceholder.typicode.com/posts')
       .then((response) => {
         commit("setMessagesList", response.data);
         console.log(response.data);
@@ -33,7 +33,7 @@ const actions = {
 
   removeMessage({ commit }, id) {
     return axios
-      .delete(`posts/${id}`)
+      .delete(`jsonplaceholder.typicode.com/posts/${id}`)
         .then((response) => {
             commit("deleteMessage", response.data);
             swal("Deleted!", `Your message has been with id ${id} deleted.`, "success");

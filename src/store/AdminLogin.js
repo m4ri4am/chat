@@ -22,7 +22,7 @@ export default {
             let data = new FormData();
             data.append("Username", email);
             data.append("Password", password);
-            const response = await axios.post("/api/v1/coop/auth/signin", data)
+            const response = await axios.post("api.ghanmeen.com/api/v1/coop/auth/signin", data)
                 .catch((error) => {
                     swal("Error ! ...", error.response.data.message, "error");
                 });
