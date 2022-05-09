@@ -13,7 +13,7 @@
     <input type="password" v-model="form.password" placeholder="Enter Password" name="password" required>
 
     <div class="signup-btn-div">
-      <button @click="register({form})" class="signupbtn">Sign Up</button>
+      <button @click="register(form)" class="signupbtn">Sign Up</button>
     </div>
   </div>
 </template>

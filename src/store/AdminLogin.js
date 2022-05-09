@@ -1,5 +1,5 @@
 import axios from "../axios";
-import swal from 'sweetalert';
+
 export default {
     state() {
         return {
@@ -24,7 +24,7 @@ export default {
             data.append("Password", password);
             const response = await axios.post("api.ghanmeen.com/api/v1/coop/auth/signin", data)
                 .catch((error) => {
-                    swal("Error ! ...", error.response.data.message, "error");
+                    alert("Error ! ...", error.response.data.message, "error");
                 });
             
             if(response.status === 401){

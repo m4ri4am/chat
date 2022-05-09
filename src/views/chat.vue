@@ -87,7 +87,7 @@ body {
   margin: 10px;
   padding: 10px;
   box-sizing: border-box;
-  background-color: rgb(232, 231, 229);
+  background-color: rgb(222, 222, 222);
 }
 .chat-body {
   overflow: auto;

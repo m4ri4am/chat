@@ -1,6 +1,6 @@
-import swal from "sweetalert";
+
 import axios from "../../axios";
-// import swal from "sweetalert";
+
 
 const state = {
     messeges: [],
@@ -36,7 +36,7 @@ const actions = {
       .delete(`jsonplaceholder.typicode.com/posts/${id}`)
         .then((response) => {
             commit("deleteMessage", response.data);
-            swal("Deleted!", `Your message has been with id ${id} deleted.`, "success");
+            alert("Deleted!", `Your message has been with id ${id} deleted.`, "success");
             return response;
         })
     },

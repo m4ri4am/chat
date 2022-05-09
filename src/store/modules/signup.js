@@ -1,6 +1,6 @@
-import swal from "sweetalert";
+
 import axios from "../../axios";
-// import swal from "sweetalert";
+
 
 const state = {
     data: {},
@@ -19,29 +19,15 @@ const mutations = {
 const actions = {
   register({commit}, data) {
     let payload = new FormData;
-    payload.append("name", data.name);
-    payload.append("email", data.email);
-    payload.append("password", data.password);
-    // for (const property in data) {
-    //   if (!data.hasOwnProperty(property) || data[property] === null) {
-    //     continue;
-    //   }
-
-    //   if (Array.isArray(data[property])) {
-    //     for (const iterator of data[property]) {
-    //       payload.append(property + '[]', iterator);
-    //     }
-    //   }
-    //   else {
-    //     payload.append(property, data[property]);
-    //   }
-    // }
+    payload.append("title", data.name);
+    payload.append("body", data.email);
+    payload.append("userId", data.password);
 
     return axios
       .post(`jsonplaceholder.typicode.com/posts`, payload)
         .then((response) => {
             commit("personalData", response.data);
-            swal("Added!", `Data Saved`, "success");
+            alert("Added!", `Data Saved`, "success");
             return response;
         })
     },
