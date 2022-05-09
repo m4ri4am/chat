@@ -1,3 +1,4 @@
+import swal from "sweetalert";
 import axios from "../../axios";
 // import swal from "sweetalert";
 
@@ -14,6 +15,10 @@ const mutations = {
   setMessagesList(state, payload) {
     state.messeges = payload;
   },
+  deleteMessage(state, payload) {
+    state.messeges.splice(payload, 1);
+
+  }
 };
 const actions = {
   fetchMessagesList({ commit }) {
@@ -26,6 +31,15 @@ const actions = {
       });
   },
 
+  removeMessage({ commit }, id) {
+    return axios
+      .delete(`posts/${id}`)
+        .then((response) => {
+            commit("deleteMessage", response.data);
+            swal("Deleted!", `Your message has been with id ${id} deleted.`, "success");
+            return response;
+        })
+    },
 };
 
 export default {

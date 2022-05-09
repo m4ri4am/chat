@@ -7,17 +7,16 @@
         </div>
       </div>
    </div>
-    <div class="chat-body">
-      <div v-for="message in messages" :key="message" class="chat-body-messages">
-          <h3>{{message.text}}</h3>
-                    <span class="mdi mdi-delete"></span>
+    <div class="chat-body"  ref="messages">
+      <div v-for="message in getMessagesList" :key="message.id" class="chat-body-messages" id="messages" >
+          <h3>{{message.title}}</h3>
+                    <span class="mdi mdi-delete" @click="remove(message.id);fetchMessagesList();"></span>
           <span class="mdi mdi-pencil"></span>
-          <p class="date">{{message.date}}</p>
 
        </div> 
         <div class="chat-body-input">
           <textarea name="write-message" id="text-message" cols="50" rows="5" v-model="text"></textarea>
-          <button class="btn-send" id="btn-send" @click="send(e)">Send</button>
+          <button class="btn-send" id="btn-send" @click="send">Send</button>
         </div> 
     </div> 
    </div>
@@ -44,14 +43,29 @@ export default {
 
 created() {
   this.fetchMessagesList();
+  // this.reverseScroll()
+},
+mounted() {
+  // this.reverseScroll()
 },
   methods: {
-    ...mapActions("messages",["fetchMessagesList"]),
+    ...mapActions("messages",["fetchMessagesList","removeMessage"]),
+
+    remove(id){
+      this.removeMessage(id);
+      this.fetchMessagesList();
+    },
+
+    // reverseScroll(){
+    //   console.log(this.$refs.messages);
+    //   this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight;
+    // },
     send() {
       if(this.text.length > 0) {
-      this.messages.push({
-        text: this.text,
-        date: new Date().toLocaleString(), 
+      this.getMessagesList.push({
+        title: this.text,
+        id: this.getMessagesList.length + 1
+
     });
     this.text = "";
       }
